@@ -4,6 +4,7 @@
     Author     : Joel
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="br.edu.ifsul.modelo.Aluno"%>
 <%@page import="br.edu.ifsul.dao.AlunoDAO"%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
@@ -38,7 +39,7 @@
             <td><%=e.getId()%></td>
             <td><%=e.getNome()%></td>
             <td><%=e.getEmail()%></td>
-            <td><%=e.getNascimento()%></td>
+            <td><%=new SimpleDateFormat("dd/MM/yyyy").format(e.getNascimento().getTime())%></td>
             <td><a href="ServletAluno?acao=alterar&id=<%=e.getId()%>">Alterar</a></td>
             <td><a href="ServletAluno?acao=excluir&id=<%=e.getId()%>">Excluir</a></td>
         </tr>

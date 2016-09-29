@@ -4,6 +4,7 @@
     Author     : Joel
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="br.edu.ifsul.dao.AlunoDAO"%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <jsp:useBean id="alunoDao" scope="session" type="AlunoDAO"/>
@@ -31,10 +32,10 @@
                     ? "" : alunoDao.getObjetoSelecionado().getId()%>" size="6" readonly /><br/>
             Nome <input type="text" name="nome" id="nome" value="<%= alunoDao.getObjetoSelecionado().getNome()==null
                     ? "" : alunoDao.getObjetoSelecionado().getNome()%>" size="40" /><br/>
-            Email <input type="text" name="uf" id="uf" value="<%= alunoDao.getObjetoSelecionado().getEmail()==null
-                    ? "" : alunoDao.getObjetoSelecionado().getEmail()%>" size="2" /><br/>
-            Nascimento <input type="text" name="uf" id="uf" value="<%= alunoDao.getObjetoSelecionado().getNascimento()==null
-                    ? "" : alunoDao.getObjetoSelecionado().getNascimento()%>" size="2" /><br/>
+            Email <input type="text" name="email" id="email" value="<%= alunoDao.getObjetoSelecionado().getEmail()==null
+                    ? "" : alunoDao.getObjetoSelecionado().getEmail()%>" size="20" /><br/>
+            Nascimento <input type="text" name="nascimento" id="nascimento" value="<%= alunoDao.getObjetoSelecionado().getNascimento()==null
+                    ? "" : new SimpleDateFormat("dd/MM/yyyy").format(alunoDao.getObjetoSelecionado().getNascimento().getTime())%>" size="6" /><br/>
             <input type="button" value="Salvar" name="btnSalvar" onclick="doSalvar()"/>
             <input type="button" value="Cancelar" name="btnCancelar" onclick="doCancelar()"/><br/>
             <input type="hidden" value="" name="acao" id="acao"/><br/>

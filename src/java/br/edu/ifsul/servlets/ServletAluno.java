@@ -3,6 +3,7 @@ package br.edu.ifsul.servlets;
 import br.edu.ifsul.dao.AlunoDAO;
 import br.edu.ifsul.modelo.Aluno;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -66,8 +67,18 @@ public class ServletAluno extends HttpServlet {
             obj.setId(id);
             obj.setNome(request.getParameter("nome"));
             obj.setEmail(request.getParameter("email"));
-            obj.setNascimento(Calendar.getInstance());
-//            obj.setAluno_disciplina(aluno_disciplina);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            // Definindo que o SimpleDateFormat não converterá datas inválidas 
+            sdf.setLenient(false);
+            // Criando um Objeto Calendar 
+            Calendar minhaData = Calendar.getInstance();
+            try {
+                //Conversão de String para calendar 
+                minhaData.setTime(sdf.parse(request.getParameter("nascimento")));
+                obj.setNascimento(minhaData);
+            } catch (Exception e) {
+                System.out.println("Data inválida");
+            }
             dao.setObjetoSelecionado(obj);
             if (dao.validaObjeto(obj)) {
                 dao.salvar(obj);
