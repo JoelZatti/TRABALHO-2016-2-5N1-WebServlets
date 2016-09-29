@@ -74,11 +74,11 @@ public class ServletAluno extends HttpServlet {
             Calendar minhaData = Calendar.getInstance();
             try {
                 //Conversão de String para calendar 
-                minhaData.setTime(sdf.parse(request.getParameter("nascimento")));
-                obj.setNascimento(minhaData);
+                minhaData.setTime(sdf.parse(request.getParameter("nascimento")));                
             } catch (Exception e) {
                 System.out.println("Data inválida");
             }
+            obj.setNascimento(minhaData);
             dao.setObjetoSelecionado(obj);
             if (dao.validaObjeto(obj)) {
                 dao.salvar(obj);
