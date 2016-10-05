@@ -89,7 +89,7 @@ public class ServletInstituicao extends HttpServlet {
             tela = "listar.jsp";
             dao.setMensagem("");
         }
-        request.getSession().setAttribute("instituicaoDao", dao);
+        request.getSession().setAttribute("instituicaoDAO", dao);
         response.sendRedirect(tela);
     }
 

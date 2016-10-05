@@ -37,7 +37,6 @@
                 %>
             <td><%=i.getId()%></td>
             <td><%=i.getNome()%></td>
-            <td><%=i.getAnoFundacao()%></td>
             <td><%=new SimpleDateFormat("dd/MM/yyyy").format(i.getAnoFundacao().getTime())%></td>
             <td><a href="ServletInstituicao?acao=alterar&id=<%=i.getId()%>">Alterar</a></td>
             <td><a href="ServletInstituicao?acao=excluir&id=<%=i.getId()%>">Excluir</a></td>

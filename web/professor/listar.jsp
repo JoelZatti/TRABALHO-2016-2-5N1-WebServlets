@@ -4,6 +4,7 @@
     Author     : Joel
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="br.edu.ifsul.modelo.Professor"%>
 <%@page import="br.edu.ifsul.dao.ProfessorDAO"%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
@@ -25,6 +26,10 @@
                 <tr>
                     <th>Titulação</th> 
                     <th>Tópicos de interesse</th>  
+                    <th>Nome</th>  
+                    <th>Email</th>  
+                    <th>Nascimento</th>  
+                    <th>Especialidade</th>  
                     <th>Alterar</th> 
                     <th>Excluir</th> 
                 </tr>
@@ -35,8 +40,12 @@
                 %>
             <td><%=p.getTitulacao()%></td>
             <td><%=p.getTopicosInteresse()%></td>
-            <td><a href="ServletProfessor?acao=alterar&id=<%=p.getTitulacao()%>">Alterar</a></td>
-            <td><a href="ServletProfessor?acao=excluir&id=<%=p.getTopicosInteresse()%>">Excluir</a></td>
+            <td><%=p.getNome()%></td>
+            <td><%=p.getEmail()%></td>
+            <td><%=new SimpleDateFormat("dd/MM/yyyy").format(p.getNascimento().getTime())%></td>
+             <td><%=p.getEspecialidade().getNome()%></td>
+            <td><a href="ServletProfessor?acao=alterar&id=<%=p.getId()%>">Alterar</a></td>
+            <td><a href="ServletProfessor?acao=excluir&id=<%=p.getId()%>">Excluir</a></td>
         </tr>
         <%
             }

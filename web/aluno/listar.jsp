@@ -34,14 +34,14 @@
             </thead>
             <tbody>
                 <%
-                    for (Aluno e : alunoDao.getLista()) {
+                    for (Aluno a : alunoDao.getLista()) {
                 %>
-            <td><%=e.getId()%></td>
-            <td><%=e.getNome()%></td>
-            <td><%=e.getEmail()%></td>
-            <td><%=new SimpleDateFormat("dd/MM/yyyy").format(e.getNascimento().getTime())%></td>
-            <td><a href="ServletAluno?acao=alterar&id=<%=e.getId()%>">Alterar</a></td>
-            <td><a href="ServletAluno?acao=excluir&id=<%=e.getId()%>">Excluir</a></td>
+            <td><%=a.getId()%></td>
+            <td><%=a.getNome()%></td>
+            <td><%=a.getEmail()%></td>
+            <td><%=new SimpleDateFormat("dd/MM/yyyy").format(a.getNascimento().getTime())%></td>
+            <td><a href="ServletAluno?acao=alterar&id=<%=a.getId()%>">Alterar</a></td>
+            <td><a href="ServletAluno?acao=excluir&id=<%=a.getId()%>">Excluir</a></td>
         </tr>
         <%
             }
